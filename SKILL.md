@@ -1,49 +1,45 @@
 # GitHub Trending + Feishu Skill
 
-获取GitHub热门AI项目数据，生成详细简报并发送到飞书。
+智能获取GitHub热门AI项目数据，生成专业简报并发送到飞书。
 
-## Trigger
+## 功能特性
+
+- 🔥 **自动抓取** - 获取GitHub热门AI项目
+- 📊 **详细报告** - 包含Stars、Fork、描述、技术栈、链接、关键词
+- 📤 **一键发送** - 自动发送到飞书
+- 🎯 **灵活配置** - 支持自定义排序方式和数量
+- 🛡️ **安全可靠** - 无需API Key，使用GitHub公开API
+
+## 触发指令
 
 - "github热门" / "GitHub趋势" / "热门AI项目"
 - "查一下github" / "做一个简报发给我"
-- "生成word简报"
+- "生成AI项目简报"
 
-## Tool
+## 参数配置
 
-- web_fetch: 获取GitHub API数据
-- message: 发送飞书消息
+| 参数 | 说明 | 默认值 |
+|------|------|--------|
+| sort | 排序方式：stars/updated/forks | stars |
+| per_page | 返回数量：1-100 | 10 |
+| topic | 搜索主题 | artificial-intelligence |
 
-## Steps
+## 使用示例
 
-1. **获取数据**
-   - 使用 web_fetch 调用 GitHub 公开API
-   - URL: `https://api.github.com/search/repositories?q=topic:artificial-intelligence+created:>2024-01-01&sort=stars&order=desc&per_page=10`
+```
+查一下github热门AI项目
+查一下github今日前三AI项目
+生成AI项目简报发给我
+```
 
-2. **解析数据**
-   - 提取项目名称、star数、fork数、描述、语言、链接、关键词
+## 技术栈
 
-3. **生成详细简报**
-   - 格式：Markdown（飞书可读）
-   - 包含：
-     - 每个项目的⭐Stars数量
-     - 每个项目的🍴Fork数量
-     - 每个项目的📝详细描述
-     - 每个项目的💻技术栈
-     - 每个项目的🔗GitHub链接
-     - 每个项目的🏷️关键词标签
-   - 技术洞察分析
+- **数据源**: GitHub REST API (公开无需认证)
+- **消息推送**: 飞书开放API
+- **运行环境**: OpenClaw
 
-4. **发送飞书**
-   - 使用 message 工具发送到飞书
-   - channel: feishu
+## 注意事项
 
-## Output
-
-飞书消息：包含详细的GitHub热门AI项目简报
-
-## Note
-
-- 不需要RoxyBrowser
-- 不需要GitHub Token
-- 使用GitHub公开API（免费）
-- 不暴露任何API密钥
+- ⚠️ GitHub API有速率限制，每小时60次请求
+- ⚠️ 建议不要频繁调用
+- ✅ 完全免费，无需任何费用
