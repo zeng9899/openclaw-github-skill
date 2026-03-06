@@ -198,7 +198,7 @@ function generateFeishuMessage(projects, params) {
     .sort((a, b) => b[1] - a[1])
     .slice(0, 3);
   
-  msg += `• **技术栈分布**: ${topLanguages.map(([lang, count]) => `\`${lang}\`(${count})`).join(' | ')}\n`;
+  msg += `• **技术栈分布**: ${topLanguages.map(([lang, count]) => `${lang}(${count})`).join(' | ')}\n`;
   msg += `• **总Star数**: ${formatNumber(projects.reduce((sum, p) => sum + p.stars, 0))}\n`;
   msg += `• **总Fork数**: ${formatNumber(projects.reduce((sum, p) => sum + p.forks, 0))}\n\n`;
   
